@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculator</title>
+    <style>
+        *{
+            margin: auto;
+        }
+        .maxCase{
+            padding: 30px;
+        }
+        .contentCase{
+            width: 350px;
+            height: 420px;
+            background-color: #939393;
+            border-radius: 5px;
+            border: 1px solid #7b8295;
+            padding: 15px 15px;
+        }
+        .initItem{
+            height: 80px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fdfdfd;
+            border-top: solid 1px #d7d7d7;
+        }
+        button{
+            border: 0;
+            outline: none;
+        }
+        .initItem p{
+            margin: 0;
+            color: #313131;
+            line-height: 80px;
+            text-align: right;
+            font-size: 50px;
+        }
+        .mainCase{
+            margin-top: 15px;
+        }
+        .mainCase div,button{
+            float: left;
+            margin: 6.5px;
+        }
+        .key{
+            width: 74px;
+            height: 45px;
+            background-color: #a4b3db;
+            line-height: 45px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            font-family: "Source Han Sans CN",serif;
+            color: #3c3737;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .key:hover{
+            background-color: #DDDFE4;
+        }
+        .clear{
+            background-color: #d9561b;
+            color: #fffffd;
+            font-size: 18px;
+        }
+        .clear:hover{
+            background-color: #DC845C;
+        }
+        .operation{
+            background-color: #567b93;
+        }
+        .operation:hover{
+            background-color: #98A0A5;
+        }
+        .equal{
+            width: 160px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="maxCase">
+    <div class="contentCase">
+        <div class="initItem">
+            <p id="initValue">0</p>
+        </div>
+        <div class="mainCase">
+            <button class="key clear">C</button>
+            <button class="key clear">CE</button>
+            <button class="key clear" id="del">DEL</button>
+            <button class="key operation">+</button>
+            <button class="key number">7</button>
+            <button class="key number">8</button>
+            <button class="key number">9</button>
+            <button class="key operation">-</button>
+            <button class="key number">4</button>
+            <button class="key number">5</button>
+            <button class="key number">6</button>
+            <button class="key operation">*</button>
+            <button class="key number">1</button>
+            <button class="key number">2</button>
+            <button class="key number">3</button>
+            <button class="key operation">/</button>
+            <button class="key number">0</button>
+            <button class="key">.</button>
+            <button class="key clear equal">=</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let initValue = document.getElementById("initValue");
+    let keyItem = document.getElementsByClassName("key");
+    for(let i = 0; i < keyItem.length; i++){
+        keyItem[i].onclick = function () {
+            if (this.innerHTML === "."){
+                initValue.innerHTML += ".";
+            }
+            if (this.innerHTML === "+"){
+                initValue.innerHTML += "+";
+            }
+            if (this.innerHTML === "-"){
+                initValue.innerHTML += "-";
+            }
+            if (this.innerHTML === "*"){
+                initValue.innerHTML += "*";
+            }
+            if (this.innerHTML === "/"){
+                initValue.innerHTML += "/";
+            }
+            // 使用eval()计算JavaScript数字字符串
+            if (this.innerHTML === "="){
+                initValue.innerHTML = eval(initValue.innerHTML);
+            }
+            //当点击数字键时，默认值为0则覆盖，否则进行字符连接
+            if (!isNaN(this.innerHTML)){
+                if (initValue.innerHTML === "0"){
+                    initValue.innerHTML = this.innerHTML;
+                }else {
+                    initValue.innerHTML += this.innerHTML;
+                }
+            }
+            // 此处用keyItem[i].innerHTML会报错，只能用this或闭包解决？
+            if (keyItem[i].innerHTML === "DEL") {
+                if (initValue.innerHTML !== "0"){ // 当默认值不为0时则删除字符串最后一位字符
+                    initValue.innerHTML = initValue.innerHTML.substring(0,initValue.innerHTML.length-1);
+                }
+                if (initValue.innerHTML.length === 0){ // 当默认值字符串长度为0时则显示"0"而不是空
+                    initValue.innerHTML = "0";
+
+                }
+            }
+
+            if (this.innerHTML === "CE" || this.innerHTML === "C"){
+                initValue.innerHTML = "0";
+            }
+
+            if (initValue.innerHTML.length > 13){
+                initValue.style.fontSize = 30 + "px";
+            }
+
+            if (initValue.innerHTML.length > 22){
+                initValue.style.fontSize = 20 + "px";
+            }
+        }
+    }
+</script>
+</body>
+</html>
