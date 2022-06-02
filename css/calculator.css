@@ -1,0 +1,74 @@
+*{
+    margin: auto;
+    background-color: #3399ff;
+}
+.maxCase{
+    padding: 30px;
+}
+.contentCase{
+    width: 350px;
+    height: 420px;
+    background-color: #939393;
+    border-radius: 5px;
+    border: 1px solid #7b8295;
+    padding: 15px 15px;
+}
+.initItem{
+    height: 80px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fdfdfd;
+    border-top: solid 1px #d7d7d7;
+}
+button{
+    border: 0;
+    outline: none;
+}
+.initItem p{
+    margin: 0;
+    color: #313131;
+    line-height: 80px;
+    text-align: right;
+    font-size: 50px;
+    background-color: #e8efeb;
+}
+.mainCase{
+    margin-top: 15px;
+}
+.mainCase div,button{
+    float: left;
+    margin: 6.5px;
+}
+.key{
+    width: 74px;
+    height: 45px;
+    background-color: #a4b3db;
+    line-height: 45px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: "Source Han Sans CN",serif;
+    color: #3c3737;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.key:hover{
+    background-color: #DDDFE4;
+}
+.clear{
+    background-color: #d9561b;
+    color: #fffffd;
+    font-size: 18px;
+}
+.clear:hover{
+    background-color: #DC845C;
+}
+.operation{
+    background-color: #567b93;
+}
+.operation:hover{
+    background-color: #98A0A5;
+}
+.equal{
+    width: 160px;
+}
